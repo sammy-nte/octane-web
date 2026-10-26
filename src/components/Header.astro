@@ -15,7 +15,7 @@ const links = [
 		<span>Octane</span>
 	</a>
 
-	<nav class="main-nav" aria-label="Primary navigation">
+	<nav class="main-nav" id="site-navigation" aria-label="Primary navigation">
 		{links.map((link) => (
 			<a href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</a>
 		))}
@@ -27,4 +27,51 @@ const links = [
 			<path d="M3 13 13 3M6 3h7v7"></path>
 		</svg>
 	</a>
+
+	<button
+		class="menu-toggle"
+		type="button"
+		aria-expanded="false"
+		aria-controls="site-navigation"
+		aria-label="Open navigation"
+	>
+		<span aria-hidden="true"></span>
+		<span aria-hidden="true"></span>
+	</button>
 </header>
+
+<script>
+	const header = document.querySelector<HTMLElement>('[data-header]');
+	const toggle = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+	const navigation = header?.querySelector<HTMLElement>('.main-nav');
+
+	const closeMenu = () => {
+		if (!header || !toggle) return;
+		header.classList.remove('is-menu-open');
+		toggle.setAttribute('aria-expanded', 'false');
+		toggle.setAttribute('aria-label', 'Open navigation');
+	};
+
+	toggle?.addEventListener('click', () => {
+		if (!header) return;
+		const isOpen = header.classList.toggle('is-menu-open');
+		toggle.setAttribute('aria-expanded', String(isOpen));
+		toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+	});
+
+	navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key !== 'Escape' || !header?.classList.contains('is-menu-open')) return;
+		closeMenu();
+		toggle?.focus();
+	});
+
+	document.addEventListener('click', (event) => {
+		if (header && event.target instanceof Node && !header.contains(event.target)) closeMenu();
+	});
+
+	window.matchMedia('(min-width: 1051px)').addEventListener('change', (event) => {
+		if (event.matches) closeMenu();
+	});
+</script>

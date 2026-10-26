@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+	['Where is my information stored?', 'Octane stores its working data in your browser on your device. Depending on the feature, it uses browser storage such as localStorage, IndexedDB and chrome.storage.local. No Octane account is required.'],
+	['Why does Octane request bookmark access?', 'Bookmark access lets the built-in Bookmarks tool read, display, add, edit and remove bookmarks from your Chrome bookmark tree.'],
+	['Why does Website Blocker ask for website access?', 'Chrome requires host access before Octane can apply local blocking rules to the sites you choose. Octane requests this access when the blocking feature needs it.'],
+	['How does Last 7 days work in Focus Mode?', 'It totals completed focus minutes from today and the six previous calendar days. Break time is not counted as focused time.'],
+	['Why is weather unavailable?', 'Weather needs location access and a successful response from the weather provider. Check Chrome location permissions and your connection, then reopen the new tab.'],
+	['Can I use http:// and https:// shortcuts?', 'Yes. Shortcut URLs can begin with either http:// or https://. Octane validates the title and URL before saving.'],
+	['Can I change the Focus Mode music?', 'Use Change playlist to paste a SoundCloud track or playlist URL. The player controls can then move through tracks available in that playlist.'],
+	['How do I reset the appearance?', 'Open Settings, expand Appearance and choose Original theme. You can also use Remove theme for the themed dashboard cards.'],
+];
+---
+
+<BaseLayout title="Support: Octane Dashboard" description="Get help with Octane Dashboard, report a problem and find answers to common questions.">
+	<div class="page-shell">
+		<Header />
+		<main>
+			<section class="internal-hero section-pad">
+				<p class="eyebrow">Support</p>
+				<h1>Answers without<br />the runaround.</h1>
+				<p class="internal-lead">Start with the guide, browse common questions or send a clear problem report.</p>
+			</section>
+
+			<section class="support-actions section-pad">
+				<a href="/guide"><span>01</span><div><strong>Read the guide</strong><small>Setup and feature walkthroughs</small></div><b>↗</b></a>
+				<a href="mailto:octanedashboard@gmail.com?subject=Octane%20support"><span>02</span><div><strong>Contact support</strong><small>Ask a question by email</small></div><b>↗</b></a>
+				<a href="mailto:octanedashboard@gmail.com?subject=Octane%201.7%20problem%20report&body=Browser%3A%20%0AWhat%20happened%3A%20%0ASteps%20to%20repeat%20it%3A%20"><span>03</span><div><strong>Report a problem</strong><small>Include your browser and steps</small></div><b>↗</b></a>
+			</section>
+
+			<section class="faq-section section-pad">
+				<div class="faq-heading"><p class="eyebrow">Common questions</p><h2>Things people usually need to know.</h2></div>
+				<div class="faq-list">
+					{faqs.map(([question, answer], index) => (
+						<details><summary><span>{String(index + 1).padStart(2, '0')}</span>{question}<b>+</b></summary><p>{answer}</p></details>
+					))}
+				</div>
+			</section>
+
+			<section class="support-foot section-pad"><p>When reporting a problem, include Octane version 1.7, your browser name, what you expected and the steps that reproduce the issue. A screenshot is useful when the problem is visual.</p></section>
+		</main>
+		<Footer />
+	</div>
+</BaseLayout>

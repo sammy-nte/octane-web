@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Changelog: Octane Dashboard" description="See what changed in Octane Dashboard releases.">
+	<div class="page-shell">
+		<Header />
+		<main>
+			<section class="internal-hero section-pad">
+				<p class="eyebrow">Changelog</p>
+				<h1>What changed,<br />and why.</h1>
+				<p class="internal-lead">A clear record of new features, interface improvements and fixes in Octane.</p>
+			</section>
+
+			<section class="release-list section-pad">
+				<article class="release release-current">
+					<header><div><span>Current release</span><h2>Version 1.7</h2></div><p>A clearer space for your day.</p></header>
+					<div class="release-body">
+						<div><h3>New</h3><ul><li>Focus Mode with tasks, timer, breaks, activity and SoundCloud music.</li><li>Website Blocker with reusable site controls and individual toggles.</li><li>Chrome bookmarks with folders, search, editing and adding.</li><li>Searchable Google Services directory.</li></ul></div>
+						<div><h3>Improved</h3><ul><li>Cleaner shortcut layout, favicon handling and first-letter fallback.</li><li>Redesigned settings with grouped, animated sections.</li><li>Refreshed Notes experience.</li><li>Welcome, update and guided tour experiences.</li><li>Higher-quality backgrounds and better large-collection performance.</li></ul></div>
+					</div>
+					<img src="/images/octane-focus.jpg" alt="Focus Mode introduced in Octane 1.7" loading="lazy" />
+				</article>
+
+				<article class="release">
+					<header><div><span>Previous release</span><h2>Version 1.6.1</h2></div><p>Maintenance and polish.</p></header>
+					<div class="release-body"><div><h3>Changed</h3><ul><li>Bug fixes across the dashboard.</li><li>Interface improvements to the core new-tab experience.</li></ul></div></div>
+				</article>
+			</section>
+
+			<section class="release-note section-pad"><p>Older release notes were not recorded in the current changelog. Future Octane updates will be documented here as they ship.</p></section>
+		</main>
+		<Footer />
+	</div>
+</BaseLayout>

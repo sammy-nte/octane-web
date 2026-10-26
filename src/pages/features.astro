@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const featureIndex = [
+	['01', 'Start', 'Search, weather, tasks and shortcuts'],
+	['02', 'Focus', 'Timer, breaks, activity and website blocking'],
+	['03', 'Organize', 'Notes, bookmarks and Google Services'],
+	['04', 'Personalize', 'Backgrounds, colour and blur'],
+];
+---
+
+<BaseLayout title="Features: Octane Dashboard" description="Explore the dashboard, Focus Mode, tools and personalization features in Octane.">
+	<div class="page-shell">
+		<Header />
+		<main>
+			<section class="internal-hero section-pad">
+				<p class="eyebrow">Features</p>
+				<h1>A useful new tab,<br />from the first click.</h1>
+				<p class="internal-lead">Octane keeps the small things you reach for every day in one calm place, then gives you a separate workspace when it is time to focus.</p>
+			</section>
+
+			<nav class="page-index section-pad" aria-label="Feature sections">
+				{featureIndex.map(([number, title, copy]) => (
+					<a href={'#' + title.toLowerCase()}><span>{number}</span><strong>{title}</strong><small>{copy}</small></a>
+				))}
+			</nav>
+
+			<section id="start" class="feature-story section-pad">
+				<div class="feature-copy">
+					<p class="eyebrow">01: Start</p>
+					<h2>The information you need before you move.</h2>
+					<p>See the time, local weather and today’s tasks without opening another page. Search the web with your preferred engine and keep frequently used sites within reach.</p>
+					<ul class="plain-list">
+						<li>Google, Bing, DuckDuckGo and Brave Search</li>
+						<li>Weather with metric or imperial units</li>
+						<li>To-do list and custom shortcuts</li>
+					</ul>
+				</div>
+				<figure class="feature-visual"><img src="/images/octane-dashboard.jpg" alt="Octane dashboard showing time, weather, search and shortcuts" /><figcaption>Your everyday dashboard</figcaption></figure>
+			</section>
+
+			<section id="focus" class="feature-story feature-story-dark">
+				<div class="feature-story-inner section-pad">
+					<div class="feature-copy">
+						<p class="eyebrow eyebrow-light">02: Focus</p>
+						<h2>A separate place for deliberate work.</h2>
+						<p>Choose a task, set focus and break lengths, then start a session. Octane records completed focus minutes for today and the last seven days.</p>
+						<ul class="plain-list">
+							<li>Custom focus and break timers</li>
+							<li>Today and seven-day activity</li>
+							<li>SoundCloud playlist support</li>
+							<li>Session-based website blocking</li>
+						</ul>
+					</div>
+					<figure class="feature-visual"><img src="/images/octane-focus.jpg" alt="Octane Focus Mode with tasks, timer and progress" loading="lazy" /><figcaption>Focus Mode</figcaption></figure>
+				</div>
+			</section>
+
+			<section id="organize" class="feature-story section-pad">
+				<div class="feature-copy">
+					<p class="eyebrow">03: Organize</p>
+					<h2>Useful tools, kept out of the way.</h2>
+					<p>Open Notes, Chrome bookmarks, Website Blocker and Focus Mode from one compact tools menu. Google Services gives common Google apps their own searchable directory.</p>
+					<ul class="plain-list">
+						<li>Local notes for quick writing</li>
+						<li>Search, add, edit and remove Chrome bookmarks</li>
+						<li>Reusable website blocking list with individual toggles</li>
+					</ul>
+				</div>
+				<div class="feature-visual-stack">
+					<figure class="feature-visual"><img src="/images/octane-tools.jpg" alt="Octane tools menu" loading="lazy" /><figcaption>Tools</figcaption></figure>
+					<figure class="feature-visual"><img src="/images/octane-google-services.jpg" alt="Octane Google Services directory" loading="lazy" /><figcaption>Google Services</figcaption></figure>
+				</div>
+			</section>
+
+			<section id="personalize" class="feature-story feature-story-accent section-pad">
+				<div class="feature-copy">
+					<p class="eyebrow">04: Personalize</p>
+					<h2>Make the dashboard feel like your space.</h2>
+					<p>Use a full-resolution background, choose a colour and control where that theme appears. The original theme and remove-theme actions make it easy to return.</p>
+					<ul class="plain-list">
+						<li>Unsplash and custom backgrounds</li>
+						<li>Adjustable blur and interface colour</li>
+						<li>Separate controls for the to-do and weather areas</li>
+					</ul>
+				</div>
+				<figure class="feature-visual"><img src="/images/octane-personalized.jpg" alt="A personalized Octane dashboard with a flower background" loading="lazy" /><figcaption>Personalized dashboard</figcaption></figure>
+			</section>
+
+			<section class="next-page section-pad"><p class="eyebrow">Next</p><a href="/guide"><span>Learn how Octane works</span><strong>Guide ↗</strong></a></section>
+		</main>
+		<Footer />
+	</div>
+</BaseLayout>

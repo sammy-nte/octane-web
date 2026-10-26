@@ -1,0 +1,30 @@
+---
+const storeUrl = 'https://chrome.google.com/webstore/detail/octane-dashboard/ikjmilpefeagnmciiohfilppkelkojfd';
+const pathname = Astro.url.pathname;
+const links = [
+	{ href: '/features', label: 'Features' },
+	{ href: '/guide', label: 'Guide' },
+	{ href: '/changelog', label: 'Changelog' },
+	{ href: '/support', label: 'Support' },
+];
+---
+
+<header class="site-header" data-header>
+	<a class="brand" href="/" aria-label="Octane home">
+		<span class="brand-mark" aria-hidden="true"></span>
+		<span>Octane</span>
+	</a>
+
+	<nav class="main-nav" aria-label="Primary navigation">
+		{links.map((link) => (
+			<a href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</a>
+		))}
+	</nav>
+
+	<a class="header-cta" href={storeUrl} target="_blank" rel="noreferrer">
+		Add to Chrome
+		<svg viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M3 13 13 3M6 3h7v7"></path>
+		</svg>
+	</a>
+</header>

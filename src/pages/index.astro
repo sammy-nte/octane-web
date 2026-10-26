@@ -1,16 +1,245 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const storeUrl = 'https://chrome.google.com/webstore/detail/octane-dashboard/ikjmilpefeagnmciiohfilppkelkojfd';
+
+const features = [
+	{
+		number: '01',
+		title: 'Start with what matters',
+		body: 'Keep the time, weather, today’s tasks, search and your favourite destinations together without turning your new tab into noise.',
+	},
+	{
+		number: '02',
+		title: 'Move into focus',
+		body: 'Switch to a dedicated workspace with a timer, breaks, focus history, a working task and the sites you want out of the way.',
+	},
+	{
+		number: '03',
+		title: 'Make it feel personal',
+		body: 'Choose the background, colour and blur that suit you. Octane can feel quiet, expressive or completely minimal.',
+	},
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title="Octane: A better new tab"
+	description="Octane turns your Chrome new tab into a personal dashboard for search, tasks, tools and focused work."
+>
+	<div id="top" class="page-shell">
+		<Header />
+
+		<main>
+			<section class="hero section-pad">
+				<div class="hero-copy" data-reveal>
+					<p class="eyebrow">Your new tab, considered</p>
+					<h1>Open a tab.<br />Own your day.</h1>
+					<p class="hero-intro">
+						Octane turns every new tab into a personal place to search, plan and focus. Useful when you need it. Quiet when you do not.
+					</p>
+					<div class="hero-actions">
+						<a class="button button-dark" href={storeUrl} target="_blank" rel="noreferrer">
+							<img class="chrome-mark" src="/chrome-logo.svg" alt="" aria-hidden="true" />
+							Add to Chrome
+						</a>
+						<a class="text-link" href="#experience">See how it works <span>↓</span></a>
+					</div>
+				</div>
+
+				<div class="hero-aside" aria-hidden="true" data-reveal>
+					<p>Dashboard</p>
+					<span>+</span>
+					<p>Focus</p>
+				</div>
+			</section>
+
+			<div class="hero-product section-pad" data-reveal>
+				<div class="browser-frame">
+					<div class="browser-bar">
+						<div class="browser-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+						<div class="browser-address">New Tab</div>
+						<div class="browser-menu" aria-hidden="true">•••</div>
+					</div>
+					<img src="/images/octane-dashboard.jpg" alt="Octane dashboard with a personal background, search, weather and shortcuts" />
+				</div>
+				<p class="product-caption"><span>01</span> Your browser, before the day gets busy.</p>
+			</div>
+
+			<section class="fact-line" aria-label="Octane highlights">
+				<p>Free to use</p>
+				<p>No account required</p>
+				<p>Built for Chrome</p>
+			</section>
+
+			<section id="experience" class="mode-section section-pad">
+				<div class="section-heading" data-reveal>
+					<p class="eyebrow">One tab. Two states.</p>
+					<h2>Your space when you arrive.<br />Your system when you focus.</h2>
+				</div>
+
+				<div class="mode-switcher" data-mode-switcher data-reveal>
+					<div class="mode-toolbar" role="tablist" aria-label="Product view">
+						<button class="is-active" type="button" role="tab" aria-selected="true" data-mode="dashboard">Dashboard</button>
+						<button type="button" role="tab" aria-selected="false" data-mode="focus">Focus Mode</button>
+						<p data-mode-description>A personal start to every tab.</p>
+					</div>
+
+					<div class="mode-stage">
+						<figure class="mode-panel is-active" data-panel="dashboard">
+							<img src="/images/octane-personalized.jpg" alt="A vivid personalized Octane dashboard" loading="lazy" />
+							<figcaption><span>Dashboard</span> Search, weather, tasks, shortcuts and the tools you use.</figcaption>
+						</figure>
+						<figure class="mode-panel" data-panel="focus" aria-hidden="true">
+							<img src="/images/octane-focus.jpg" alt="Octane Focus Mode with task list, timer and daily progress" loading="lazy" />
+							<figcaption><span>Focus Mode</span> One task, a clear timer and a record of the work done.</figcaption>
+						</figure>
+					</div>
+				</div>
+			</section>
+
+			<section class="principles section-pad">
+				<div class="principles-intro" data-reveal>
+					<p class="eyebrow">Designed around your day</p>
+					<p class="large-copy">Octane gives the new tab a job without letting it take over.</p>
+				</div>
+
+				<div class="principle-list">
+					{features.map((feature) => (
+						<article class="principle" data-reveal>
+							<span>{feature.number}</span>
+							<h3>{feature.title}</h3>
+							<p>{feature.body}</p>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="focus" class="focus-story">
+				<div class="focus-copy section-pad" data-reveal>
+					<p class="eyebrow eyebrow-light">Focus Mode</p>
+					<h2>Give the next<br />minute one job.</h2>
+					<p>
+						Build a short list, choose what you are working on and start the timer. Octane keeps your breaks, sessions and distracting sites in one clear system.
+					</p>
+					<a class="focus-link" href="#tools">Explore the rest of Octane <span>↘</span></a>
+				</div>
+				<div class="focus-visual" data-reveal>
+					<img src="/images/octane-focus.jpg" alt="Octane Focus Mode interface" loading="lazy" />
+				</div>
+			</section>
+
+			<section id="tools" class="tools-section section-pad">
+				<div class="tools-heading" data-reveal>
+					<div>
+						<p class="eyebrow eyebrow-light">Tools</p>
+						<h2>Close a few tabs.<br />Keep the useful parts.</h2>
+					</div>
+					<p>Notes, Chrome bookmarks, a website blocker and Focus Mode stay nearby without crowding the dashboard.</p>
+				</div>
+
+				<div class="tools-visual" data-reveal>
+					<img src="/images/octane-tools.jpg" alt="Octane tools menu with Notes, Bookmarks, Website Blocker and Focus Mode" loading="lazy" />
+				</div>
+
+				<div class="tool-index" aria-label="Included tools">
+					<span>Notes</span><span>Bookmarks</span><span>Website blocker</span><span>Focus Mode</span>
+				</div>
+			</section>
+
+			<section id="personalize" class="personalize-section section-pad">
+				<div class="personalize-grid">
+					<div class="personalize-copy" data-reveal>
+						<p class="eyebrow">Make it yours</p>
+						<h2>A workspace should not feel borrowed.</h2>
+						<p>
+							Change the background, build a colour theme and decide where blur belongs. The controls stay practical; the result feels personal.
+						</p>
+						<ul>
+							<li>Full-resolution backgrounds</li>
+							<li>Custom and original themes</li>
+							<li>Adjustable blur and colour</li>
+						</ul>
+					</div>
+
+					<div class="personalize-visual" data-reveal>
+						<img src="/images/octane-personalized.jpg" alt="Octane dashboard with a vivid flower background" loading="lazy" />
+						<div class="palette" aria-hidden="true">
+							<span style="--swatch:#cc4666"></span>
+							<span style="--swatch:#7a9565"></span>
+							<span style="--swatch:#5f769c"></span>
+							<span style="--swatch:#8a6957"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="google-strip" data-reveal>
+					<div>
+						<p class="eyebrow">Google Services</p>
+						<h3>The useful Google links, together.</h3>
+						<p>Search and open the web apps you use without rebuilding the same collection of shortcuts.</p>
+					</div>
+					<img src="/images/octane-google-services.jpg" alt="Octane Google Services directory" loading="lazy" />
+				</div>
+			</section>
+
+			<section class="closing-cta section-pad" data-reveal>
+				<p class="eyebrow">Start here</p>
+				<h2>Make the next tab<br />a better one.</h2>
+				<div>
+					<p>Free to use. No account required.</p>
+					<a class="button button-dark" href={storeUrl} target="_blank" rel="noreferrer">
+						<img class="chrome-mark" src="/chrome-logo.svg" alt="" aria-hidden="true" />
+						Add to Chrome
+					</a>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</div>
+
+	<script is:inline>
+		const switcher = document.querySelector('[data-mode-switcher]');
+		if (switcher) {
+			const descriptions = {
+				dashboard: 'A personal start to every tab.',
+				focus: 'A deliberate place to finish the work.'
+			};
+
+			switcher.querySelectorAll('[data-mode]').forEach((button) => {
+				button.addEventListener('click', () => {
+					const mode = button.dataset.mode;
+					switcher.querySelectorAll('[data-mode]').forEach((item) => {
+						const active = item === button;
+						item.classList.toggle('is-active', active);
+						item.setAttribute('aria-selected', active ? 'true' : 'false');
+					});
+					switcher.querySelectorAll('[data-panel]').forEach((panel) => {
+						const active = panel.dataset.panel === mode;
+						panel.classList.toggle('is-active', active);
+						panel.setAttribute('aria-hidden', active ? 'false' : 'true');
+					});
+					const description = switcher.querySelector('[data-mode-description]');
+					if (description) description.textContent = descriptions[mode];
+				});
+			});
+		}
+
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (!reducedMotion && 'IntersectionObserver' in window) {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.12 });
+			document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
+		} else {
+			document.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'));
+		}
+	</script>
+</BaseLayout>

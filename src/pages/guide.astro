@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const topics = [
+	['01', 'Set up the dashboard'],
+	['02', 'Add tasks and shortcuts'],
+	['03', 'Use the tools'],
+	['04', 'Start Focus Mode'],
+	['05', 'Change the appearance'],
+];
+---
+
+<BaseLayout title="Guide: Octane Dashboard" description="Learn how to set up and use Octane Dashboard, tools, Focus Mode and themes.">
+	<div class="page-shell">
+		<Header />
+		<main>
+			<section class="internal-hero section-pad">
+				<p class="eyebrow">Guide</p>
+				<h1>Set it up once.<br />Use it every day.</h1>
+				<p class="internal-lead">A practical walkthrough of the main dashboard, tools, Focus Mode and appearance controls.</p>
+			</section>
+
+			<nav class="guide-index section-pad" aria-label="Guide topics">
+				{topics.map(([number, title]) => <a href={'#step-' + number}><span>{number}</span>{title}</a>)}
+			</nav>
+
+			<div class="guide-content section-pad">
+				<article id="step-01" class="guide-step">
+					<div class="guide-number">01</div>
+					<div class="guide-copy"><p class="eyebrow">Dashboard</p><h2>Set up the essentials.</h2><ol><li>Open a new tab after installing Octane.</li><li>Choose your preferred search engine from the icon beside the search field.</li><li>Open Settings to choose 12-hour or 24-hour time and metric or imperial weather units.</li><li>Allow location access if you want local weather.</li></ol></div>
+					<img src="/images/octane-dashboard.jpg" alt="The main Octane dashboard" />
+				</article>
+
+				<article id="step-02" class="guide-step">
+					<div class="guide-number">02</div>
+					<div class="guide-copy"><p class="eyebrow">Plan and open</p><h2>Add tasks and shortcuts.</h2><ol><li>Type a task in the to-do field and select Add.</li><li>Use the check control when a task is complete.</li><li>Select Add shortcut, enter a title of at least three characters and provide a URL beginning with http:// or https://.</li><li>If a favicon is unavailable, Octane uses the shortcut’s first letter.</li></ol></div>
+					<img src="/images/octane-personalized.jpg" alt="Octane dashboard showing its shortcut area" loading="lazy" />
+				</article>
+
+				<article id="step-03" class="guide-step">
+					<div class="guide-number">03</div>
+					<div class="guide-copy"><p class="eyebrow">Tools</p><h2>Keep useful information nearby.</h2><ol><li>Open Tools from the left side of the dashboard.</li><li>Choose Notes for local writing or Bookmarks to browse your Chrome bookmark folders.</li><li>Open Website Blocker to add a domain and use its toggle whenever you want to pause blocking for that site.</li><li>Use Google Services to search and open a Google app.</li></ol></div>
+					<img src="/images/octane-tools.jpg" alt="Octane tools menu" loading="lazy" />
+				</article>
+
+				<article id="step-04" class="guide-step">
+					<div class="guide-number">04</div>
+					<div class="guide-copy"><p class="eyebrow">Focus Mode</p><h2>Give the session one job.</h2><ol><li>Open Tools and select Focus Mode.</li><li>Add a task and choose it from Working on.</li><li>Choose Focus or Break and customize the timer if needed.</li><li>Use Change playlist to paste a SoundCloud track or playlist link.</li><li>Start the timer. Completed focus minutes are included in Today and Last 7 days.</li></ol></div>
+					<img src="/images/octane-focus.jpg" alt="Octane Focus Mode timer and task list" loading="lazy" />
+				</article>
+
+				<article id="step-05" class="guide-step">
+					<div class="guide-number">05</div>
+					<div class="guide-copy"><p class="eyebrow">Appearance</p><h2>Make it yours.</h2><ol><li>Open Settings and expand Appearance.</li><li>Choose a background source or add your own image.</li><li>Select a colour and use Add theme to apply it across supported areas.</li><li>Use the card toggles to include the to-do and weather areas.</li><li>Choose Original theme to restore Octane’s default colour or Remove theme to turn it off on those cards.</li></ol></div>
+					<img src="/images/octane-google-services.jpg" alt="An Octane interface using a custom theme" loading="lazy" />
+				</article>
+			</div>
+
+			<section class="next-page section-pad"><p class="eyebrow">Need help?</p><a href="/support"><span>Find answers or report a problem</span><strong>Support ↗</strong></a></section>
+		</main>
+		<Footer />
+	</div>
+</BaseLayout>

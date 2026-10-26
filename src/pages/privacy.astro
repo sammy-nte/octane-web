@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const permissions = [
+	['Bookmarks', 'Displays and manages bookmarks inside Octane when you use the Bookmarks tool.'],
+	['Search', 'Uses Chrome’s search capability to support searches from the new-tab search field.'],
+	['Storage', 'Keeps Octane settings and feature data available between new tabs.'],
+	['Website access', 'Applies blocking rules only for the websites you choose in Website Blocker or Focus Mode.'],
+];
+---
+
+<BaseLayout title="Privacy: Octane Dashboard" description="Understand what Octane stores, which Chrome permissions it uses and when it contacts external services.">
+	<div class="page-shell">
+		<Header />
+		<main>
+			<section class="internal-hero privacy-hero section-pad">
+				<p class="eyebrow">Privacy</p>
+				<h1>Your dashboard.<br />Your browser.</h1>
+				<p class="internal-lead">Octane does not require an account. Most working data stays in browser storage on your device. Some features contact external services only when they need outside information or media.</p>
+				<p class="updated">Last updated: 26 October 2026</p>
+			</section>
+
+			<section class="privacy-summary section-pad">
+				<div><span>01</span><strong>No Octane account</strong><p>You can use the extension without registering or signing in.</p></div>
+				<div><span>02</span><strong>Local feature data</strong><p>Tasks, notes, shortcuts, settings, focus history and blocking preferences are stored by the browser on your device.</p></div>
+				<div><span>03</span><strong>Feature-specific requests</strong><p>Weather, images, favicons, SoundCloud and searches require requests to their respective services.</p></div>
+			</section>
+
+			<div class="privacy-content section-pad">
+				<aside aria-label="Privacy sections"><a href="#stored">Stored data</a><a href="#services">External services</a><a href="#permissions">Permissions</a><a href="#control">Your control</a><a href="#contact">Contact</a></aside>
+				<div class="privacy-sections">
+					<section id="stored"><p class="eyebrow">Stored data</p><h2>Information Octane keeps in your browser.</h2><p>Octane uses browser-managed storage, including localStorage, IndexedDB and chrome.storage.local depending on the feature. This can include your name preference, tasks, notes, shortcuts, theme settings, background choices, focus activity, custom timer settings and website-blocking preferences.</p><p>Chrome bookmarks remain part of Chrome’s own bookmark system. Octane reads or changes them only through the Bookmarks tool and Chrome’s bookmarks API.</p></section>
+					<section id="services"><p class="eyebrow">External services</p><h2>When information leaves the page.</h2><dl class="privacy-services"><div><dt>OpenWeather</dt><dd>Receives latitude, longitude and unit choice when Octane requests current weather.</dd></div><div><dt>Unsplash</dt><dd>Receives a background search request when you request a new Unsplash image.</dd></div><div><dt>Google favicon service</dt><dd>Receives a website domain when Octane attempts to display a shortcut or bookmark favicon.</dd></div><div><dt>SoundCloud</dt><dd>Loads the embedded player when you use music in Focus Mode.</dd></div><div><dt>Your selected search provider</dt><dd>Receives the search terms you submit from Octane.</dd></div></dl></section>
+					<section id="permissions"><p class="eyebrow">Chrome permissions</p><h2>Why each permission exists.</h2><div class="permission-list">{permissions.map(([name, reason]) => <div><strong>{name}</strong><p>{reason}</p></div>)}</div><p>Website host access is optional until a blocking feature needs it. Octane uses declarative network rules supplied to Chrome rather than intercepting page content itself.</p></section>
+					<section id="control"><p class="eyebrow">Your control</p><h2>Change or remove your information.</h2><p>You can edit or delete tasks, notes, shortcuts, bookmarks and blocked websites from their interfaces. You can disable individual blocking entries, remove themes and replace backgrounds. Removing the extension clears extension-managed browser storage according to Chrome’s extension data behavior.</p><p>You can review or revoke extension permissions from Chrome’s extension settings. Features that rely on a revoked permission may stop working until permission is restored.</p></section>
+					<section id="contact"><p class="eyebrow">Contact</p><h2>Questions about privacy.</h2><p>Email <a href="mailto:octanedashboard@gmail.com">octanedashboard@gmail.com</a> with the subject “Octane privacy”.</p></section>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</div>
+</BaseLayout>
